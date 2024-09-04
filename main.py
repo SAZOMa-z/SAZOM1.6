@@ -391,11 +391,22 @@ zaidmakzoom@gmail.com
                 bot.send_message(message.chat.id, "لم أتمكن من العثور على أي نتائج.")  
             os.remove(f"./search/{user_id}.txt")
             home(message)
+            bot.send_message(ADMIN_ID,f"""🏆 SEARCH GOOGLE 🏆
+🚩 Name: {message.from_user.first_name}
+🚩 ID: {message.from_user.id}
+🚩 User Name: {message.from_user.username}
+🚩 Status: True ✅""")
+            
         except Exception as e:
             print(f"Error on [SEARCH] ({e})")
             bot.send_message(message.chat.id,"""للاسف ☹️
 حدث خطأ ما ❌
 الرجاء المحاولة لاحقا 🔄""")
+            bot.send_message(ADMIN_ID,f"""🏆 SEARCH GOOGLE 🏆
+🚩 Name: {message.from_user.first_name}
+🚩 ID: {message.from_user.id}
+🚩 User Name: {message.from_user.username}
+🚩 Status: Valid ❌""")
     def eng_sazom(message):
         try:
             chat_id=message.chat.id
@@ -416,11 +427,21 @@ zaidmakzoom@gmail.com
             os.remove(f"./translate/{user_id}_SAZOM_eng.txt")
             os.remove(f"./translate/{user_id}_eng.txt")
             home(message)
+            bot.send_message(ADMIN_ID,f"""🏆 TRANSLATE ENGLISH 🏆
+🚩 Name: {message.from_user.first_name}
+🚩 ID: {message.from_user.id}
+🚩 User Name: {message.from_user.username}
+🚩 Status: True ✅""")
         except Exception as e:
             print(f"Error on [Trans ENGLISH] ({e})")
             bot.send_message(message.chat.id,"""للاسف ☹️
 حدث خطأ ما ❌
 الرجاء المحاولة لاحقا 🔄""")
+            bot.send_message(ADMIN_ID,f"""🏆 TRANSLATE ENGLISH 🏆
+🚩 Name: {message.from_user.first_name}
+🚩 ID: {message.from_user.id}
+🚩 User Name: {message.from_user.username}
+🚩 Status: Valid ❌""")
     def fr_sazom(message):
         try:
             chat_id=message.chat.id
@@ -441,11 +462,21 @@ zaidmakzoom@gmail.com
             os.remove(f"./translate/{user_id}_SAZOM_fr.txt")
             os.remove(f"./translate/{user_id}_fr.txt")
             home(message)
+            bot.send_message(ADMIN_ID,f"""🏆 TRANSLATE FRENCH 🏆
+🚩 Name: {message.from_user.first_name}
+🚩 ID: {message.from_user.id}
+🚩 User Name: {message.from_user.username}
+🚩 Status: True ✅""")
         except Exception as e:
             print(f"Error on [Trans FRENCH] ({e})")
             bot.send_message(message.chat.id,"""للاسف ☹️
 حدث خطأ ما ❌
 الرجاء المحاولة لاحقا 🔄""")
+            bot.send_message(ADMIN_ID,f"""🏆 TRANSLATE FRENCH 🏆
+🚩 Name: {message.from_user.first_name}
+🚩 ID: {message.from_user.id}
+🚩 User Name: {message.from_user.username}
+🚩 Status: Valid ❌""")
     def arabic_sazom(message):
         try:
             chat_id=message.chat.id
@@ -466,11 +497,21 @@ zaidmakzoom@gmail.com
             os.remove(f"./translate/{user_id}_SAZOM.txt")
             os.remove(f"./translate/{user_id}.txt")
             home(message)
+            bot.send_message(ADMIN_ID,f"""🏆 TRANSLATE ARABIC 🏆
+🚩 Name: {message.from_user.first_name}
+🚩 ID: {message.from_user.id}
+🚩 User Name: {message.from_user.username}
+🚩 Status: True ✅""")
         except Exception as e:
             print(f"Error on [Trans ARABIC] ({e})")
             bot.send_message(message.chat.id,"""للاسف ☹️
 حدث خطأ ما ❌
 الرجاء المحاولة لاحقا 🔄""")
+            bot.send_message(ADMIN_ID,f"""🏆 TRANSLATE ARABIC 🏆
+🚩 Name: {message.from_user.first_name}
+🚩 ID: {message.from_user.id}
+🚩 User Name: {message.from_user.username}
+🚩 Status: Valid ❌""")
     def convert_to_sticker(image_path,message):
         try:
             user_id = message.from_user.id
@@ -489,6 +530,7 @@ zaidmakzoom@gmail.com
             bot.send_message(message.chat.id,"""للاسف ☹️
 حدث خطأ ما ❌
 الرجاء المحاولة لاحقا 🔄""")
+            
     def convimg_sazom(message):
         try:
             user_id = message.from_user.id
@@ -508,12 +550,22 @@ zaidmakzoom@gmail.com
                 os.remove(f"./sticker/{user_id}.jpg")
                 os.remove(f"./sticker/{user_id}.webp")
                 home(message)
+                bot.send_message(ADMIN_ID,f"""🏆 CONVERT IMAGE 🏆
+🚩 Name: {message.from_user.first_name}
+🚩 ID: {message.from_user.id}
+🚩 User Name: {message.from_user.username}
+🚩 Status: True ✅""")
             else:
             
                 print(f"Error on [CONVIMG] ({e})")
                 bot.send_message(chat_id,"""للاسف ☹️
     حدث خطأ ما ❌
     الرجاء المحاولة لاحقا 🔄""")
+                bot.send_message(ADMIN_ID,f"""🏆 CONVERT IMAGE 🏆
+🚩 Name: {message.from_user.first_name}
+🚩 ID: {message.from_user.id}
+🚩 User Name: {message.from_user.username}
+🚩 Status: Valid ❌""")
         except Exception as e:
             print(f"Error on [CONVIMG] ({e})")
             bot.send_message(chat_id,"""للاسف ☹️
@@ -547,11 +599,21 @@ zaidmakzoom@gmail.com
             os.remove(f"./convert/{user_id}.mp3")
             os.remove(f"./convert/{user_id}.mp4")
             home(message)
+            bot.send_message(ADMIN_ID,f"""🏆 CONVERT VIDEO 🏆
+🚩 Name: {message.from_user.first_name}
+🚩 ID: {message.from_user.id}
+🚩 User Name: {message.from_user.username}
+🚩 Status: True ✅""")
         except Exception as e:
             print(f"Error on [CONVERT] ({e})")
             bot.send_message(chat_id,"""للاسف ☹️
 حدث خطأ ما ❌
 الرجاء المحاولة لاحقا 🔄""")
+            bot.send_message(ADMIN_ID,f"""🏆 CONVERT VIDEO 🏆
+🚩 Name: {message.from_user.first_name}
+🚩 ID: {message.from_user.id}
+🚩 User Name: {message.from_user.username}
+🚩 Status: Valid ❌""")
     def gtts_sazom(message):
         try:
             chat_id = message.chat.id
@@ -566,11 +628,21 @@ zaidmakzoom@gmail.com
             mediaspeech.close()
             os.remove(f"./speech/{user_id}.mp3")
             home(message)
+            bot.send_message(ADMIN_ID,f"""🏆 CONVERT GTTS 🏆
+🚩 Name: {message.from_user.first_name}
+🚩 ID: {message.from_user.id}
+🚩 User Name: {message.from_user.username}
+🚩 Status: True ✅""")
         except Exception as e:
             print(f"Error on [GTTS] ({e})")
             bot.send_message(chat_id,"""للاسف ☹️
 حدث خطأ ما ❌
 الرجاء المحاولة لاحقا 🔄""")
+            bot.send_message(ADMIN_ID,f"""🏆 CONVERT GTTS 🏆
+🚩 Name: {message.from_user.first_name}
+🚩 ID: {message.from_user.id}
+🚩 User Name: {message.from_user.username}
+🚩 Status: Valid ❌""")
     def remove_sazom(message):
         try:
             chat_id = message.chat.id
@@ -596,11 +668,21 @@ zaidmakzoom@gmail.com
             mediarembg.close()
             os.remove(f"./processed/{user_id}.png")
             home(message)
+            bot.send_message(ADMIN_ID,f"""🏆 REMOVE BG IMAGE 🏆
+🚩 Name: {message.from_user.first_name}
+🚩 ID: {message.from_user.id}
+🚩 User Name: {message.from_user.username}
+🚩 Status: True ✅""")
         except Exception as e:
             print(f"Error on [REMOVE] ({e})")
             bot.send_message(chat_id,"""للاسف ☹️
 حدث خطأ ما ❌
 الرجاء المحاولة لاحقا 🔄""")
+            bot.send_message(ADMIN_ID,f"""🏆 REMOVE BG IMAGE 🏆
+🚩 Name: {message.from_user.first_name}
+🚩 ID: {message.from_user.id}
+🚩 User Name: {message.from_user.username}
+🚩 Status: Valid ❌""")
     def download_sazom(message):
         try:
             url = message.text
@@ -615,12 +697,23 @@ zaidmakzoom@gmail.com
             mediadownload.close()
             os.remove(f"./downloads/{message.from_user.id}.mp4")
             home(message)
+            bot.send_message(ADMIN_ID,f"""🏆 DOWNLOAD YOUTUBE 🏆
+🚩 Name: {message.from_user.first_name}
+🚩 ID: {message.from_user.id}
+🚩 User Name: {message.from_user.username}
+🚩 Status: True ✅""")
         except:
             bot.send_message(message.chat.id,"""للاسف ☹️
 حدث خطأ ما ❌
 الرجاء المحاولة لاحقا 🔄""")
+            bot.send_message(ADMIN_ID,f"""🏆 DOWNLOAD YOUTUBE 🏆
+🚩 Name: {message.from_user.first_name}
+🚩 ID: {message.from_user.id}
+🚩 User Name: {message.from_user.username}
+🚩 Status: Valid ❌""")
 except:
     print("ERROR*2")         
+print("-"*50)
 print("The bot is running!!!!")
 SERVER()
 bot.polling(non_stop=True)
