@@ -9,7 +9,9 @@ from gtts import gTTS
 from googletrans import Translator
 from datetime import datetime
 from googlesearch import search
+from telebot import types
 from server import SERVER
+import qrcode
 import speedtest
 import moviepy.editor
 import threading
@@ -19,6 +21,7 @@ import os
 import math
 TOKEN = "7113724596:AAE4yYczuklB_raJ2pi4vObn7BzCUpO9YwE"
 bot = telebot.TeleBot(TOKEN)
+user_data = {}
 print('-'*50)
 print("SAZOM v1.6")
 print('-')
@@ -87,11 +90,30 @@ if os.path.exists(SEARCH):
 else:
     os.makedirs("search")
     print("creat folder - [search]")
+QR = "./qr/"
+if os.path.exists(QR):
+    print("alredy - [qr]")
+    pass
+else:
+    os.makedirs("qr")
+    print("creat folder - [qr]")
 #---------------------------------------------------------------
 try:
     ADMIN_ID = 6020331913
     INTERVAL_MINUTES = 5
     keep_sending = True
+    qr_types = {
+        "WiFi": ["Enter SSID:", "Enter Password:", "Enter Security (WPA/WEP):"],
+        "URL": ["Enter URL:"],
+        "Text": ["Enter Text:"],
+        "Email": ["Enter Email:"],
+        "Phone": ["Enter Phone Number:"],
+        "SMS": ["Enter Phone Number:", "Enter Message:"],
+        "Geo": ["Enter Latitude:", "Enter Longitude:"],
+        "YouTube": ["Enter YouTube URL:"],
+        "Instagram": ["Enter Instagram Username:"],
+        # يمكنك إضافة بقية الأنواع هنا بنفس الطريقة
+}
     def send_periodic_message():
         while keep_sending:
             time.sleep(INTERVAL_MINUTES * 60)
@@ -201,6 +223,7 @@ try:
         markup = ReplyKeyboardMarkup(resize_keyboard=True,one_time_keyboard=True)
         markup.add(KeyboardButton("تنزيل فيديوهات 📥"))
         markup.add(KeyboardButton("حذف الخلفية 📷"))
+        #markup.add(KeyboardButton("رموز  QR 🈺"))
         markup.add(KeyboardButton("تحويل النص إلى كلام 🔀"))
         markup.add(KeyboardButton("تحويل أي فيدو إلى موسيقى 🔁"))
         markup.add(KeyboardButton("معرفة الموقع من الرقم 📲"))
@@ -216,6 +239,7 @@ try:
         markup = ReplyKeyboardMarkup(resize_keyboard=True,one_time_keyboard=True)
         markup.add(KeyboardButton("تنزيل فيديوهات 📥"))
         markup.add(KeyboardButton("حذف الخلفية 📷"))
+        #markup.add(KeyboardButton("رموز  QR 🈺"))
         markup.add(KeyboardButton("تحويل النص إلى كلام 🔀"))
         markup.add(KeyboardButton("تحويل أي فيدو إلى موسيقى 🔁"))
         markup.add(KeyboardButton("معرفة الموقع من الرقم 📲"))
@@ -265,6 +289,12 @@ try:
         markup = InlineKeyboardMarkup()
         markup.add(InlineKeyboardButton("غوغل",callback_data="google"))
         bot.send_message(message.chat.id,"البحث في:",reply_markup=markup)
+    #----------------------------------------------- show QR
+    #def show_qr(message):
+    #    markup = InlineKeyboardMarkup()
+    #    markup.add(InlineKeyboardButton("إنشاء QR ✏️",callback_data="make_qr"))
+    #    markup.add(InlineKeyboardButton("قراءة QR 📖",callback_data="read_qr"))
+    #    bot.send_message(message.chat.id,"اختر نوع ال QR:",reply_markup=markup)
     #---------------------- keyboard buttons
     @bot.message_handler(func=lambda message: True)
     def respond_buttons_keyboard(message):
@@ -280,6 +310,11 @@ try:
             mark.add(KeyboardButton("إلغاء ❌"))
             bot.send_message(message.chat.id,"جاري التحميل...",reply_markup=mark)
             show_remove(message)
+        #elif message.text == 'رموز  QR 🈺':
+        #    mark = ReplyKeyboardMarkup()
+        #    mark.add(KeyboardButton("إلغاء ❌"))
+        #    bot.send_message(message.chat.id,"جاري التحميل...",reply_markup=mark)
+        #    show_qr(message)
         elif message.text == 'تحويل النص إلى كلام 🔀':
             mark = ReplyKeyboardMarkup()
             mark.add(KeyboardButton("إلغاء ❌"))    
@@ -340,6 +375,9 @@ zaidmakzoom@gmail.com
             bot.delete_message(call.message.chat.id,call.message.message_id)
             defrembg = bot.send_message(call.message.chat.id,"يرجى ارسال الصورة.")
             bot.register_next_step_handler(defrembg,remove_sazom)
+        elif call.data == "make_qr":
+            bot.delete_message(call.message.chat.id,call.message.message_id)
+            make_qr(call.message)
         elif call.data == 'gtts':
             bot.delete_message(call.message.chat.id,call.message.message_id)
             defgtts = bot.send_message(call.message.chat.id,"يرجى كتابة النص المراد تحويله إلى كلام.")
@@ -374,6 +412,83 @@ zaidmakzoom@gmail.com
             bot.send_message(call.message.chat.id,"""للاسف ☹️
 حدث خطأ ما ❌
 الرجاء المحاولة لاحقا 🔄""")
+    try:    
+        def make_qr(message):
+            markup = types.ReplyKeyboardMarkup(row_width=2)
+            for qr_type in qr_types.keys():
+                markup.add(types.KeyboardButton(qr_type))
+            bot.send_message(message.chat.id, "اختر نوع QR الذي تريد إنشاءه:", reply_markup=markup)
+        @bot.message_handler(func=lambda message: message.text in qr_types)
+        def handle_qr_type(message):
+            qr_type = message.text
+            user_data[message.chat.id] = {'type': qr_type, 'step': 0, 'inputs': []}
+            bot.send_message(message.chat.id, qr_types[qr_type][0])
+        @bot.message_handler(func=lambda message: message.chat.id in user_data)
+        def handle_inputs(message):
+            chat_id = message.chat.id
+            if chat_id not in user_data:
+                bot.send_message(chat_id, "يرجى اختيار نوع QR أولاً باستخدام /start.")
+                return
+            user_state = user_data[chat_id]
+            qr_type = user_state['type']
+            step = user_state['step']
+            user_state['inputs'].append(message.text)
+            if step + 1 < len(qr_types[qr_type]):
+                user_state['step'] += 1
+                bot.send_message(chat_id, qr_types[qr_type][step + 1])
+            else:
+                create_qr(chat_id, qr_type, user_state['inputs'])
+                del user_data[chat_id]
+
+        def create_qr(chat_id, qr_type, inputs):
+            if qr_type == "WiFi":
+                ssid, password, security = inputs
+                qr_data = f"""WIFI:{ssid};
+                T:{security};
+                P:{password}"""
+            elif qr_type == "URL":
+                qr_data = inputs[0]
+            elif qr_type == "Text":
+                qr_data = inputs[0]
+            elif qr_type == "Email":
+                qr_data = f"mailto:{inputs[0]}"
+            elif qr_type == "Phone":
+                qr_data = f"tel:{inputs[0]}"
+            elif qr_type == "SMS":
+                phone, message = inputs
+                qr_data = f"smsto:{phone}:{message}"
+            elif qr_type == "Geo":
+                latitude, longitude = inputs
+                qr_data = f"geo:{latitude},{longitude}"
+            elif qr_type == "YouTube":
+                qr_data = inputs[0]
+            elif qr_type == "Instagram":
+                username = inputs[0]
+                qr_data = f"https://www.instagram.com/{username}"
+            img = qrcode.make(qr_data)
+            img = img.convert("RGB")
+            qr_pixels = img.load()
+            background_color = (255, 255, 255)
+            qr_color = (0, 0, 0)
+            for y in range(img.size[1]):
+                for x in range(img.size[0]):
+                    if qr_pixels[x, y] == (0, 0, 0):
+                        qr_pixels[x, y] = qr_color
+                    else:
+                        qr_pixels[x, y] = background_color
+            img_path = f'./qr/{message.from_user.id}.png'
+            img.save(img_path)
+            with open(img_path, 'rb') as qr_file:
+                bot.send_photo(chat_id, photo=qr_file, caption="رمز QR الخاص بك.")
+            os.remove(img_path)
+            home(message)
+            bot.send_message(ADMIN_ID,f"""🏆 MAKE QR 🏆
+    🚩 Name: {message.from_user.first_name}
+    🚩 ID: {message.from_user.id}
+    🚩 User Name: {message.from_user.username}
+    🚩 Status: True ✅""")
+    except Exception as e:
+        print("Error on [MAKE QR] ({e})")     
     def google_sazom(message):
         user_id = message.from_user.id
         query = message.text
@@ -713,7 +828,6 @@ zaidmakzoom@gmail.com
 🚩 Status: Valid ❌""")
 except:
     print("ERROR*2")         
-print("-"*50)
 print("The bot is running!!!!")
 SERVER()
 bot.polling(non_stop=True)
