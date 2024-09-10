@@ -3,20 +3,24 @@ Traceback (most recent call last):
     from rembg import remove
   File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\site-packages\rembg\__init__.py", line 5, in <module>
     from .bg import remove
-  File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\site-packages\rembg\bg.py", line 6, in <module>
-    import onnxruntime as ort
-PS C:\Users\S-FAMILY> & C:/Users/S-FAMILY/AppData/Local/Programs/Python/Python39-32/python.exe c:/Users/S-FAMILY/Desktop/run/SAZOM.py
+  File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\site-packages\rembg\bg.py", line 7, in <module>  
+    from cv2 import (
+ule>
+    bootstrap()
+strap
+    native_module = importlib.import_module("cv2")
+PS C:\Users\S-FAMILY\Desktop\run> & C:/Users/S-FAMILY/AppData/Local/Programs/Python/Python39-32/python.exe c:/Users/S-FAMILY/Desktop/run/SAZOM.py
 Traceback (most recent call last):
   File "c:\Users\S-FAMILY\Desktop\run\SAZOM.py", line 6, in <module>
     from rembg import remove
   File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\site-packages\rembg\__init__.py", line 5, in <module>
     from .bg import remove
-  File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\site-packages\rembg\bg.py", line 6, in <module>
-    import onnxruntime as ort
-  File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\site-packages\onnxruntime\__init__.py", line 57, in <module>
-    raise import_capi_exception
-  File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\site-packages\onnxruntime\__init__.py", line 23, in <module>
-    from onnxruntime.capi._pybind_state import ExecutionMode  # noqa: F401
-  File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\site-packages\onnxruntime\capi\_pybind_state.py", line 32, in <module>
-    from .onnxruntime_pybind11_state import *  # noqa
-ImportError: DLL load failed while importing onnxruntime_pybind11_state: %1 is not a valid Win32 application.
+  File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\site-packages\rembg\bg.py", line 7, in <module>  
+    from cv2 import (
+  File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\site-packages\cv2\__init__.py", line 181, in <module>
+    bootstrap()
+  File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\site-packages\cv2\__init__.py", line 153, in bootstrap
+    native_module = importlib.import_module("cv2")
+  File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\importlib\__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: DLL load failed while importing cv2: %1 is not a valid Win32 application.
