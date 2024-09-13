@@ -1,4 +1,1 @@
-Microsoft (R) C/C++ Optimizing Compiler Version 19.41.34120 for x86
-Copyright (C) Microsoft Corporation.  All rights reserved.
-
-usage: cl [ option... ] filename... [ /link linkoption... ]
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvars32.bat"
