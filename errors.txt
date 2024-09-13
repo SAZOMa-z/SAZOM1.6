@@ -1,38 +1,20 @@
-Installing backend dependencies ... done
-  Preparing metadata (pyproject.toml) ... error
-  error: subprocess-exited-with-error
+Getting requirements to build wheel ... done
+    Preparing wheel metadata ... error
+    ERROR: Command errored out with exit status 1:
+     command: 'c:\users\s-family\appdata\local\programs\python\python39-32\python.exe' 'c:\users\s-family\appdata\local\programs\python\python39-32\lib\site-packages\pip\_vendor\pep517\_in_process.py' prepare_metadata_for_build_wheel 'C:\Users\S-FAMILY\AppData\Local\Temp\tmpmlbmgj98'
+         cwd: C:\Users\S-FAMILY\AppData\Local\Temp\pip-install-zu_m5ryj\scipy
+    Complete output (12 lines):
+    + meson setup C:\Users\S-FAMILY\AppData\Local\Temp\pip-install-zu_m5ryj\scipy C:\Users\S-FAMILY\AppData\Local\Temp\pip-install-zu_m5ryj\scipy\.mesonpy-yum7i46t -Dbuildtype=release -Db_ndebug=if-release -Db_vscrt=md --native-file=C:\Users\S-FAMILY\AppData\Local\Temp\pip-install-zu_m5ryj\scipy\.mesonpy-yum7i46t\meson-python-native-file.ini
+    The Meson build system
+    Version: 1.5.1
+    Source dir: C:\Users\S-FAMILY\AppData\Local\Temp\pip-install-zu_m5ryj\scipy
+    Build dir: C:\Users\S-FAMILY\AppData\Local\Temp\pip-install-zu_m5ryj\scipy\.mesonpy-yum7i46t
+    Build type: native build
+    Project name: scipy
+    Project version: 1.13.1
 
-  × Preparing metadata (pyproject.toml) did not run successfully.
-  │ exit code: 1
-  ╰─> [21 lines of output]
-      + meson setup C:\Users\S-FAMILY\AppData\Local\Temp\pip-install-hprzou3e\scikit-image_0a46f6f4934d4fa4b3b4fae9f190ed00 C:\Users\S-FAMILY\AppData\Local\Temp\pip-install-hprzou3e\scikit-image_0a46f6f4934d4fa4b3b4fae9f190ed00\.mesonpy-zc68k7ui -Dbuildtype=release -Db_ndebug=if-release -Db_vscrt=md --native-file=C:\Users\S-FAMILY\AppData\Local\Temp\pip-install-hprzou3e\scikit-image_0a46f6f4934d4fa4b3b4fae9f190ed00\.mesonpy-zc68k7ui\meson-python-native-file.ini
-      The Meson build system
-      Version: 1.5.1
-      Source dir: C:\Users\S-FAMILY\AppData\Local\Temp\pip-install-hprzou3e\scikit-image_0a46f6f4934d4fa4b3b4fae9f190ed00
-      Build dir: C:\Users\S-FAMILY\AppData\Local\Temp\pip-install-hprzou3e\scikit-image_0a46f6f4934d4fa4b3b4fae9f190ed00\.mesonpy-zc68k7ui
-      Build type: native build
-      Project name: scikit-image
-      Project version: 0.24.0
-      WARNING: Failed to activate VS environment: Could not find C:\Program Files\Microsoft Visual Studio\Installer\vswhere.exe
+    ..\meson.build:1:0: ERROR: Compiler cl cannot compile programs.
 
-      ..\meson.build:1:0: ERROR: Unknown compiler(s): [['icl'], ['cl'], ['cc'], ['gcc'], ['clang'], ['clang-cl'], ['pgcc']]
-      The following exception(s) were encountered:
-      Running `icl ""` gave "[WinError 2] The system cannot find the file specified"
-      Running `cl /?` gave "[WinError 2] The system cannot find the file specified"
-      Running `cc --version` gave "[WinError 2] The system cannot find the file specified"
-      Running `gcc --version` gave "[WinError 2] The system cannot find the file specified"
-      Running `clang --version` gave "[WinError 2] The system cannot find the file specified"
-      Running `clang-cl /?` gave "[WinError 2] The system cannot find the file specified"
-      Running `pgcc --version` gave "[WinError 2] The system cannot find the file specified"
-
-      A full log can be found at C:\Users\S-FAMILY\AppData\Local\Temp\pip-install-hprzou3e\scikit-image_0a46f6f4934d4fa4b3b4fae9f190ed00\.mesonpy-zc68k7ui\meson-logs\meson-log.txt
-      [end of output]
-
-  note: This error originates from a subprocess, and is likely not a problem with pip.
-error: metadata-generation-failed
-
-× Encountered error while generating package metadata.
-╰─> See above for output.
-
-note: This is an issue with the package mentioned above, not pip.
-hint: See above for details.
+    A full log can be found at C:\Users\S-FAMILY\AppData\Local\Temp\pip-install-zu_m5ryj\scipy\.mesonpy-yum7i46t\meson-logs\meson-log.txt
+    ----------------------------------------
+ERROR: Command errored out with exit status 1: 'c:\users\s-family\appdata\local\programs\python\python39-32\python.exe' 'c:\users\s-family\appdata\local\programs\python\python39-32\lib\site-packages\pip\_vendor\pep517\_in_process.py' prepare_metadata_for_build_wheel 'C:\Users\S-FAMILY\AppData\Local\Temp\tmpmlbmgj98' Check the logs for full command output.
