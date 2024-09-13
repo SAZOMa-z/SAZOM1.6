@@ -1,20 +1,4 @@
-Getting requirements to build wheel ... done
-    Preparing wheel metadata ... error
-    ERROR: Command errored out with exit status 1:
-     command: 'c:\users\s-family\appdata\local\programs\python\python39-32\python.exe' 'c:\users\s-family\appdata\local\programs\python\python39-32\lib\site-packages\pip\_vendor\pep517\_in_process.py' prepare_metadata_for_build_wheel 'C:\Users\S-FAMILY\AppData\Local\Temp\tmp95ma5gnl'
-         cwd: C:\Users\S-FAMILY\AppData\Local\Temp\pip-install-7v46zyxs\scipy
-    Complete output (12 lines):
-    + meson setup C:\Users\S-FAMILY\AppData\Local\Temp\pip-install-7v46zyxs\scipy C:\Users\S-FAMILY\AppData\Local\Temp\pip-install-7v46zyxs\scipy\.mesonpy-j9nue67w -Dbuildtype=release -Db_ndebug=if-release -Db_vscrt=md --native-file=C:\Users\S-FAMILY\AppData\Local\Temp\pip-install-7v46zyxs\scipy\.mesonpy-j9nue67w\meson-python-native-file.ini
-    The Meson build system
-    Version: 1.5.1
-    Source dir: C:\Users\S-FAMILY\AppData\Local\Temp\pip-install-7v46zyxs\scipy
-    Build dir: C:\Users\S-FAMILY\AppData\Local\Temp\pip-install-7v46zyxs\scipy\.mesonpy-j9nue67w
-    Build type: native build
-    Project name: scipy
-    Project version: 1.13.1
+Microsoft (R) C/C++ Optimizing Compiler Version 19.41.34120 for x86
+Copyright (C) Microsoft Corporation.  All rights reserved.
 
-    ..\meson.build:1:0: ERROR: Compiler cl cannot compile programs.
-
-    A full log can be found at C:\Users\S-FAMILY\AppData\Local\Temp\pip-install-7v46zyxs\scipy\.mesonpy-j9nue67w\meson-logs\meson-log.txt
-    ----------------------------------------
-ERROR: Command errored out with exit status 1: 'c:\users\s-family\appdata\local\programs\python\python39-32\python.exe' 'c:\users\s-family\appdata\local\programs\python\python39-32\lib\site-packages\pip\_vendor\pep517\_in_process.py' prepare_metadata_for_build_wheel 'C:\Users\S-FAMILY\AppData\Local\Temp\tmp95ma5gnl' Check the logs for full command output.
+usage: cl [ option... ] filename... [ /link linkoption... ]
