@@ -1,1 +1,84 @@
-"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvars32.bat"
+2024-09-14 12:22:48,486 (__init__.py:1106 MainThread) ERROR - TeleBot: "Infinity polling exception: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))"
+2024-09-14 12:22:48,493 (__init__.py:1108 MainThread) ERROR - TeleBot: "Exception traceback:
+Traceback (most recent call last):
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\urllib3\connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
+    response = conn.getresponse()
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\urllib3\connection.py", line 507, in getresponse
+    httplib_response = super().getresponse()
+  File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\http\client.py", line 1347, in getresponse
+    response.begin()
+  File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\http\client.py", line 307, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\http\client.py", line 268, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+  File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\urllib3\connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\urllib3\util\retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\urllib3\connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
+    response = conn.getresponse()
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\urllib3\connection.py", line 507, in getresponse
+    httplib_response = super().getresponse()
+  File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\http\client.py", line 1347, in getresponse
+    response.begin()
+  File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\http\client.py", line 307, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\http\client.py", line 268, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+  File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "C:\Users\S-FAMILY\AppData\Local\Programs\Python\Python39-32\lib\ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\telebot\__init__.py", line 1101, in infinity_polling
+    self.polling(non_stop=True, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\telebot\__init__.py", line 1189, in polling
+    self.__threaded_polling(non_stop=non_stop, interval=interval, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\telebot\__init__.py", line 1264, in __threaded_polling
+    raise e
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\telebot\__init__.py", line 1225, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\telebot\util.py", line 111, in raise_exceptions
+    raise self.exception_info
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\telebot\util.py", line 93, in run
+    task(*args, **kwargs)
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\telebot\__init__.py", line 687, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1),
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\telebot\__init__.py", line 659, in get_updates
+    json_updates = apihelper.get_updates(
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\telebot\apihelper.py", line 330, in get_updates
+    return _make_request(token, method_url, params=payload)
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\telebot\apihelper.py", line 162, in _make_request
+    result = _get_req_session().request(
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\S-FAMILY\Desktop\run\myenv\lib\site-packages\requests\adapters.py", line 682, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
